@@ -40,7 +40,7 @@ class KinentaiViewController: UIViewController {
     fileprivate var mKinentaiSelectDialog: KinentaiSelectDialog!
     fileprivate var mKinentaiSelectDialogSingleMultiple: KinentaiSelectDialogSingleMultiple!
     fileprivate var mKinentaiSelectDialog2: KinentaiSelectDialog2!
-    fileprivate var mPassInputDialog: PassInputDialog!
+
     //データ保存用
     let userDefaults = UserDefaults.standard
     
@@ -199,8 +199,7 @@ class KinentaiViewController: UIViewController {
         
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
-        mPassInputDialog = PassInputDialog(parentView: self)
-        
+      
         //passCheckをfalseで初期化
         userDefaults.set(false, forKey: "passCheck")
     }
@@ -334,7 +333,7 @@ class KinentaiViewController: UIViewController {
         ])
         self.view.addConstraints([
             //情報(緊援)
-            Constraint(btnKinentaiTel, .bottom, to:self.view, .bottom, constant:-8),
+            Constraint(btnKinentaiTel, .bottom, to:self.view, .bottom, constant:-28),
             Constraint(btnKinentaiTel, .leading, to:pad31, .trailing, constant:0),
             Constraint(btnKinentaiTel, .width, to:self.view, .width, constant:0, multiplier:0.3)
         ])
@@ -346,19 +345,19 @@ class KinentaiViewController: UIViewController {
         ])
         self.view.addConstraints([
             //情報(河川)
-            Constraint(btnKinentaiRiver, .bottom, to:self.view, .bottom, constant:-8),
+            Constraint(btnKinentaiRiver, .bottom, to:self.view, .bottom, constant:-28),
             Constraint(btnKinentaiRiver, .leading, to:pad32, .trailing, constant:0),
             Constraint(btnKinentaiRiver, .width, to:btnKinentaiTel, .width, constant:0)
         ])
         self.view.addConstraints([
             //pad33
-            Constraint(pad33, .bottom, to:self.view, .bottom, constant:-8),
+            Constraint(pad33, .bottom, to:self.view, .bottom, constant:-28),
             Constraint(pad33, .leading, to:btnKinentaiRiver, .trailing, constant:0),
             Constraint(pad33, .width, to:self.view, .width, constant:0, multiplier:0.024)
         ])
         self.view.addConstraints([
             //情報(気象)
-            Constraint(btnKinentaiWeather, .bottom, to:self.view, .bottom ,constant:-8),
+            Constraint(btnKinentaiWeather, .bottom, to:self.view, .bottom ,constant:-28),
             Constraint(btnKinentaiWeather, .leading, to:pad33, .trailing, constant:0),
             Constraint(btnKinentaiWeather, .width, to:btnKinentaiTel, .width, constant:0)
         ])
@@ -422,27 +421,6 @@ class KinentaiViewController: UIViewController {
         mInfoDialog.showInfo("road")
     }
     
-    //未使用（連絡網の場合の挙動）
-    @objc func showContactLoad(_ sender: UIButton){
-        //初期設定のままだと設定画面に遷移
-        if userDefaults.string(forKey: "password") == "nil" {
-            //PasViewController呼び出し
-            let data:PassViewController = PassViewController()
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.present(nav, animated: true, completion: nil)
-        } else if !userDefaults.bool(forKey: "passCheck"){
-            //パスワードチェック呼び出し
-            mPassInputDialog.showResult()
-        } else {
-            //合っていれば表示
-            let data:ContactSearchViewController = ContactSearchViewController()
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.present(nav, animated: true, completion: nil)
-        }
-    }
-
     //情報(河川)
     @objc func showInfoRiver(_ sender: UIButton){
         mInfoDialog.showInfo("river")
@@ -458,84 +436,6 @@ class KinentaiViewController: UIViewController {
         mInfoDialog.showInfo("kinen")
     }
     
-    /*緊急会陰除隊だけは、大阪市以外の他都市でも使うときのために以下は残しておく
-    //基礎データ入力画面遷移
-    @objc func onClickbtnData(_ sender : UIButton){
-        //データ入力ViewControllerの存在を確認
-        if isDataViewController  {
-            //存在したなら自らを消滅するのみ
-            self.dismiss(animated: true, completion: nil)
-            isKinentaiViewController = false
-        } else {
-            //dataViewControllerのインスタンス生成
-            let data:DataViewController = DataViewController()
-            isDataViewController = true
-            //navigationControllerのrootViewControllerにdataViewControllerをセット
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            //画面遷移
-            self.present(nav, animated: true, completion: nil)
-        }
-    }
-    
-    //震災画面遷移
-    @objc func onClickbtnEarthquake(_ sender : UIButton){
-        //震災ViewControllerの存在を確認
-        if isViewController  {
-            //存在したなら自らを消滅するのみ
-            self.dismiss(animated: true, completion: nil)
-            isKinentaiViewController = false
-        } else {
-            //dataViewControllerのインスタンス生成
-            let data:ViewController = ViewController()
-            isViewController = true
-            //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            //画面遷移
-            self.present(nav, animated: true, completion: nil)
-        }
-    }
-    
-    //風水害画面遷移
-    @objc func onClickbtnTyphoon(_ sender : UIButton){
-        //風水害ViewControllerの存在を確認
-        if isTyphoonViewController  {
-            //存在したなら自らを消滅するのみ
-            self.dismiss(animated: true, completion: nil)
-            isKinentaiViewController = false
-        } else {
-            //インスタンス生成
-            let data:TyphoonViewController = TyphoonViewController()
-            isTyphoonViewController = true
-            //navigationControllerのrootViewControllerにTyphoonViewControllerをセット
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            //画面遷移
-            self.present(nav, animated: true, completion: nil)
-        }
-    }
-    
-    //国民保護画面遷移
-    @objc func onClickbtnKokuminhogo(_ sender : UIButton){
-        //国民保護ViewControllerの存在を確認
-        if isKokuminhogoViewController  {
-            //存在したなら自らを消滅するのみ
-            self.dismiss(animated: true, completion: nil)
-            isKinentaiViewController = false
-        } else {
-            //KokuminhogoViewControllerのインスタンス生成
-            let data:KokuminhogoViewController = KokuminhogoViewController()
-            isKokuminhogoViewController = true
-            //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            //画面遷移
-            self.present(nav, animated: true, completion: nil)
-        }
-    }
- */
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

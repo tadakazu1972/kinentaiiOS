@@ -20,8 +20,6 @@ class ViewController: UIViewController {
     //別クラスのインスタンス保持用変数
     //fileprivate var mViewController: ViewController!
     fileprivate var mInfoDialog: InfoDialog!
-    fileprivate var mContactLoadDialog: ContactLoadDialog2!
-    fileprivate var mPassInputDialog: PassInputDialog!
     
     //データ保存用
     let userDefaults = UserDefaults.standard
@@ -98,7 +96,6 @@ class ViewController: UIViewController {
         
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
-        mPassInputDialog = PassInputDialog(parentView: self)
         
         //passCheckをfalseで初期化
         userDefaults.set(false, forKey: "passCheck")

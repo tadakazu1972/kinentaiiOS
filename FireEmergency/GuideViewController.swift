@@ -28,17 +28,7 @@ class GuideViewController: UIViewController {
     //別クラスのインスタンス保持用変数
     fileprivate var mInfoDialog: InfoDialog!
     fileprivate var mBousainetDialog: BousainetDialog!
-    fileprivate var mContactLoadDialog: ContactLoadDialog!
-    fileprivate var mContactLoadDialog2: ContactLoadDialog2!
-    fileprivate var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
-    fileprivate var mContactDeleteDialog: ContactDeleteDialog!
-    fileprivate var mContactImportCSVDialog: ContactImportCSVDialog!
-    fileprivate var mGuide1Dialog: Guide1Dialog!
-    fileprivate var mGuide2SelectDialog: Guide2SelectDialog!
-    fileprivate var mGuide3Dialog: Guide3Dialog!
-    fileprivate var mGuide4SelectDialog: Guide4SelectDialog!
     fileprivate var mGuide5Dialog: Guide5Dialog!
-    fileprivate var mGuide6Dialog: Guide6Dialog!
     
     override func viewDidLoad() {
         super.viewDidLoad()

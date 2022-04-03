@@ -18,30 +18,9 @@ class ViewController2: UIViewController {
     
     fileprivate var mInfoDialog: InfoDialog!
     fileprivate var mBousainetDialog: BousainetDialog!
-    fileprivate var mContactLoadDialog: ContactLoadDialog2!
-    fileprivate var mPassInputDialog: PassInputDialog!
-    
-    //基礎データ入力、連絡網データ操作、アプリ説明書それぞれ３つのViewCOntroller設定
-    private lazy var mDataViewController: DataViewController = {
-        var viewController = DataViewController()
-        add(asChildViewController: viewController)
-        return viewController
-    }()
-    
-    private lazy var mContactViewController: ContactViewController = {
-        var viewController = ContactViewController()
-        add(asChildViewController: viewController)
-        return viewController
-    }()
-    
+        
     private lazy var mGuideViewController: GuideViewController = {
         var viewController = GuideViewController()
-        add(asChildViewController: viewController)
-        return viewController
-    }()
-    
-    private lazy var mPersonalViewController1: PersonalViewController1 = {
-        var viewController = PersonalViewController1()
         add(asChildViewController: viewController)
         return viewController
     }()
@@ -75,9 +54,6 @@ class ViewController2: UIViewController {
             
         //アプリ説明書
         case 3:
-            remove(asChildViewController: mDataViewController)
-            remove(asChildViewController: mContactViewController)
-            remove(asChildViewController: mPersonalViewController1)
             add(asChildViewController: mGuideViewController)
         
         default:
