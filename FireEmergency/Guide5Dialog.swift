@@ -78,7 +78,7 @@ class Guide5Dialog {
         text0.textAlignment = NSTextAlignment.left
         text0.isEditable = false
         text0.isScrollEnabled = true
-        text0.text="５　情報確認"
+        text0.text="情報確認"
         scroll.addSubview(text0)
         
         //image1生成

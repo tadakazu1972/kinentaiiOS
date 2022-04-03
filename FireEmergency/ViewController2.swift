@@ -18,11 +18,8 @@ class ViewController2: UIViewController {
     
     fileprivate var mInfoDialog: InfoDialog!
     fileprivate var mBousainetDialog: BousainetDialog!
-    fileprivate var mEarthSelectDialog: EarthSelectDialog!
     fileprivate var mContactLoadDialog: ContactLoadDialog2!
     fileprivate var mPassInputDialog: PassInputDialog!
-    //結果表示用クラス保持用
-    internal var mEarthResultDialog: EarthResultDialog!
     
     //基礎データ入力、連絡網データ操作、アプリ説明書それぞれ３つのViewCOntroller設定
     private lazy var mDataViewController: DataViewController = {
@@ -75,19 +72,6 @@ class ViewController2: UIViewController {
     
     internal func updateView(){
         switch mScreen {
-        //基礎データ入力
-        case 1:
-            remove(asChildViewController: mContactViewController)
-            remove(asChildViewController: mGuideViewController)
-            remove(asChildViewController: mPersonalViewController1)
-            add(asChildViewController: mDataViewController)
-            
-        //連絡網データ操作
-        case 2:
-            remove(asChildViewController: mDataViewController)
-            remove(asChildViewController: mGuideViewController)
-            remove(asChildViewController: mPersonalViewController1)
-            add(asChildViewController: mContactViewController)
             
         //アプリ説明書
         case 3:
@@ -96,13 +80,6 @@ class ViewController2: UIViewController {
             remove(asChildViewController: mPersonalViewController1)
             add(asChildViewController: mGuideViewController)
         
-        //非常参集　職員情報登録
-        case 4:
-            remove(asChildViewController: mDataViewController)
-            remove(asChildViewController: mContactViewController)
-            remove(asChildViewController: mGuideViewController)
-            add(asChildViewController: mPersonalViewController1)
-                        
         default:
             break
         }

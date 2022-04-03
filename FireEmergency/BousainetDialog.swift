@@ -16,7 +16,6 @@ class BousainetDialog {
     fileprivate var text2: UITextView!
     fileprivate var btnClose: UIButton!
     fileprivate var btnApp: UIButton!
-    fileprivate var mTyphoonSelectDialog2: TyphoonSelectDialog2!
     
     //コンストラクタ
     init(parentView: UIViewController){

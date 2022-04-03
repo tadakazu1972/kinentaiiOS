@@ -39,15 +39,12 @@ class ContactViewController: UIViewController {
     //別クラスのインスタンス保持用変数
     fileprivate var mInfoDialog: InfoDialog!
     fileprivate var mBousainetDialog: BousainetDialog!
-    fileprivate var mEarthSelectDialog: EarthSelectDialog!
     fileprivate var mContactLoadDialog: ContactLoadDialog!
     fileprivate var mContactLoadDialog2: ContactLoadDialog2!
     fileprivate var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
     fileprivate var mContactDeleteDialog: ContactDeleteDialog!
     fileprivate var mContactImportCSVDialog: ContactImportCSVDialog!
     fileprivate var mPassInputDialog: ContactPassInputDialog!
-    //結果表示用クラス保持用
-    internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
     let userDefaults = UserDefaults.standard
     //SQLite用
