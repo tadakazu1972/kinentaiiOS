@@ -10,9 +10,7 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
-			<array>
-				<string>/Users/tadakazu/AndroidStudioProjects/FireEmergency/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png</string>
-			</array>
+			<array/>
 			<key>CFBundleTypeName</key>
 			<string>CSV</string>
 			<key>CFBundleTypeRole</key>
@@ -24,8 +22,6 @@
 				<string>public.plain-text</string>
 			</array>
 		</dict>
-		<dict/>
-		<dict/>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
