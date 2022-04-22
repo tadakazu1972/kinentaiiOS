@@ -53,7 +53,7 @@ class KinentaiSelectDialog3 {
         //首都直下地震
         case 2:
             text0.text = "首都直下地震アクションプラン適用\n\n即時応援都道府県に該当する\n"
-            text1.text = "■指揮支援部隊\n　→統括指揮支援隊として出動\n　→"
+            text1.text = "■指揮支援部隊\n　→統括指揮支援隊及び指揮支援隊出動\n　→"
             text2.text = "■大阪府大隊(陸上)\n　→全隊出動(エネ産編成)\n　→"
             text3.text = "■航空小隊\n　→統括指揮支援部隊輸送航空小隊\n　→"
             break
